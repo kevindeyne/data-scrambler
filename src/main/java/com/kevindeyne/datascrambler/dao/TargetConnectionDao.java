@@ -40,8 +40,14 @@ public class TargetConnectionDao {
     public boolean testConnection() throws SQLException {
         Connection connection = DriverManager.getConnection(url, username, password);
         DSLContext dsl = using(new DefaultConfiguration().derive(connection));
-        Integer[] result = dsl.selectOne().fetch().intoArray(0, Integer.class);
-        return result.length == 1 && result[0] == 1;
+        if(dsl.meta().getTables().isEmpty()) {
+            Integer[] result = dsl.selectOne().fetch().intoArray(0, Integer.class);
+            return result.length == 1 && result[0] == 1;
+        } else {
+            Integer[] result = dsl.selectCount().from(dsl.meta().getTables().get(0)).fetch().intoArray(0, Integer.class);
+            return result.length == 1 && result[0] != null;
+        }
+
     }
 
     public HikariDataSource toDataSource() {
@@ -62,7 +68,7 @@ public class TargetConnectionDao {
             dsl.truncate(DSL.table(tableName)).cascade().execute();
         } catch (Throwable e) {
             //TODO see https://github.com/jOOQ/jOOQ/issues/7367 ; not yet supported
-            dsl.truncate(DSL.table(tableName)).execute();
+            dsl.truncate(dsl.meta().getTables().stream().filter(t -> t.getName().equalsIgnoreCase(tableName)).findFirst().get()).execute();
         }
     }
 

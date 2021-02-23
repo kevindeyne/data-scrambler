@@ -61,6 +61,7 @@ public class SourceConnectionDao {
         final List<Table<?>> tables = dsl.meta(optionalSchema.get()).getTables();
         return tables.stream()
                 .filter(t -> TableOptions.TableType.TABLE.equals(t.getOptions().type()) && t.fields().length > 0)
+                .filter(t -> !(t.getName().startsWith("MON$") || t.getName().startsWith("RDB$") || t.getName().startsWith("SEC$")))
                 .collect(Collectors.toList());
 
     }

@@ -70,6 +70,7 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
 		<dependency>
 			<groupId>com.google.code.gson</groupId>
 			<artifactId>gson</artifactId>
+			<version>2.8.6</version>
 		</dependency>
 		<dependency>
 			<groupId>org.fluttercode.datafactory</groupId>
@@ -82,19 +83,19 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
 			<version>2.7.2</version>
 		</dependency>
 		<dependency>
-			<groupId>com.microsoft.sqlserver</groupId>
-			<artifactId>mssql-jdbc</artifactId>
-			<scope>runtime</scope>
-		</dependency>
-		<dependency>
 			<groupId>org.postgresql</groupId>
 			<artifactId>postgresql</artifactId>
-			<scope>runtime</scope>
+			<version>42.2.19</version>
 		</dependency>
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
-			<scope>runtime</scope>
+			<version>8.0.23</version>
+		</dependency>
+		<dependency>
+			<groupId>org.firebirdsql.jdbc</groupId>
+			<artifactId>jaybird</artifactId>
+			<version>4.0.2.java8</version>
 		</dependency>
 		<dependency>
 			<groupId>org.jooq</groupId>
@@ -114,10 +115,13 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
+			<version>1.18.18</version>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>com.zaxxer</groupId>
 			<artifactId>HikariCP</artifactId>
+			<version>4.0.2</version>
 		</dependency>
 		<dependency>
 			<groupId>com.devskiller</groupId>
@@ -160,6 +164,12 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
 			<groupId>org.testcontainers</groupId>
 			<artifactId>mysql</artifactId>
 			<version>1.15.2</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.firebirdsql</groupId>
+			<artifactId>firebird-testcontainers-java</artifactId>
+			<version>1.1.0</version>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>

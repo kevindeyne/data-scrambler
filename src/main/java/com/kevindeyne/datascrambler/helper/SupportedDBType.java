@@ -7,11 +7,10 @@ import java.util.List;
 
 public enum SupportedDBType {
 
-    ORACLE("jdbc:oracle:thin:@host:port:dbname", SQLDialect.DEFAULT),
     MYSQL("jdbc:mysql://host:port/dbname", SQLDialect.MYSQL),
     POSTGRESQL("jdbc:postgresql://host:port/dbname", SQLDialect.POSTGRES),
-    SQL_SERVER("jdbc:sqlserver://host:port;instance=SQLEXPRESS;databaseName=dbname", SQLDialect.DEFAULT),
-    MARIADB("jdbc:mariadb://host:port/dbname", SQLDialect.MARIADB);
+    MARIADB("jdbc:mariadb://host:port/dbname", SQLDialect.MARIADB),
+    FIREBIRD("jdbc:firebirdsql://host:port/dbname", SQLDialect.FIREBIRD);
 
     private String placeholder;
     private SQLDialect sqlDialect;
